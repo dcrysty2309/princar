@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 14 820 172" width="820" height="172" role="img" aria-label="princar.ro"><style>@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;1,600&amp;display=swap");</style>
+  <g transform="translate(34 22) scale(1.12) skewX(-12)">
+    <rect x="0" y="62" width="34" height="10" rx="3" fill="#0E1A2E"/>
+    <rect x="8" y="84" width="26" height="10" rx="3" fill="#0E1A2E"/>
+    <rect x="-2" y="106" width="36" height="10" rx="3" fill="#FF6A13"/>
+    <path d="M60 10H116A48 48 0 0 1 116 106H60Z" fill="#FF6A13"/>
+    <path d="M44 28H102A44 44 0 0 1 102 116H84V160H44Z" fill="#0E1A2E"/>
+    <path d="M60 64H94V50L124 72 94 94V80H60Z" fill="#fff"/>
+  </g>
+  <text x="222" y="150" font-family="Poppins, Inter, sans-serif" font-style="italic" font-weight="600" font-size="124" letter-spacing="-3" fill="#0E1A2E">princar<tspan fill="#FF6A13">.ro</tspan></text>
+</svg>

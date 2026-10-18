@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 580" role="img" aria-label="Ilustrație: o persoană pune bani în fondul social CAR, iar din fond iese împrumutul pentru casă">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4EC"/><stop offset="1" stop-color="#FFDCC4"/></linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC170"/><stop offset=".55" stop-color="#FF8A2B"/><stop offset="1" stop-color="#E5600E"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".55"/><stop offset=".18" stop-color="#FFFFFF" stop-opacity=".12"/><stop offset=".8" stop-color="#FFFFFF" stop-opacity=".08"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".45"/></linearGradient>
+    <linearGradient id="sweater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A44"/><stop offset="1" stop-color="#0E1A2E"/></linearGradient>
+    <linearGradient id="pants" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9AA1AB"/><stop offset="1" stop-color="#7C838E"/></linearGradient>
+    <radialGradient id="floor" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E9A57C" stop-opacity=".55"/><stop offset="1" stop-color="#E9A57C" stop-opacity="0"/></radialGradient>
+    <g id="c"><ellipse rx="17" ry="17" fill="url(#coin)"/><ellipse rx="11" ry="11" fill="none" stroke="#FFE2B8" stroke-width="2.5" opacity=".9"/><path d="M-3 -6h6v12h-6z" fill="#FFE2B8" opacity=".85"/></g>
+  </defs>
+
+  <!-- fundal: cerc cald și podea luminată -->
+  <g transform="translate(8 -38)">
+    <path d="M318 46C452 42 556 150 552 300C548 452 438 552 300 552C176 552 74 474 64 352C58 268 74 214 92 170C112 112 116 58 176 40C222 26 262 48 318 46Z" fill="none" stroke="#FF6A13" stroke-width="16" stroke-linecap="round" stroke-dasharray="900 2000" stroke-dashoffset="-250" transform="translate(300 300) scale(1.075) rotate(-6) translate(-300 -300)" class="sw1"/>
+    <path d="M318 46C452 42 556 150 552 300C548 452 438 552 300 552C176 552 74 474 64 352C58 268 74 214 92 170C112 112 116 58 176 40C222 26 262 48 318 46Z" fill="none" stroke="#0E1A2E" stroke-width="12" stroke-linecap="round" stroke-dasharray="520 2000" stroke-dashoffset="-60" transform="translate(300 300) scale(1.04) rotate(4) translate(-300 -300)" class="sw2"/>
+    <path d="M318 46C452 42 556 150 552 300C548 452 438 552 300 552C176 552 74 474 64 352C58 268 74 214 92 170C112 112 116 58 176 40C222 26 262 48 318 46Z" fill="url(#bg)"/>
+  </g>
+  <ellipse cx="300" cy="512" rx="290" ry="40" fill="url(#floor)"/>
+
+  <!-- recipient stânga: împrumutul tău (casa) -->
+  <g class="jar-loan">
+    <g class="house">
+      <path d="M58 430l52-44 52 44v62H58z" fill="#fff"/>
+      <path d="M46 436l64-56 64 56" fill="none" stroke="#FF6A13" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="96" y="452" width="28" height="40" rx="4" fill="#0E1A2E"/>
+      <rect x="70" y="440" width="18" height="16" rx="3" fill="#FFD2B3"/>
+      <rect x="132" y="440" width="18" height="16" rx="3" fill="#FFD2B3"/>
+      <path class="heart" d="M110 338c-5-8-18-7-18 3 0 8 11 15 18 20 7-5 18-12 18-20 0-10-13-11-18-3z" fill="#FF6A13"/>
+    </g>
+    <path d="M32 322v168a14 14 0 0 0 14 14h128a14 14 0 0 0 14-14V322" fill="url(#glass)" stroke="#0E1A2E" stroke-width="7" stroke-linejoin="round"/>
+  </g>
+
+  <!-- recipient mijloc: fondul social (monede) -->
+  <g class="jar-fund">
+    <g class="pile">
+      <use href="#c" x="242" y="484"/><use href="#c" x="278" y="486"/><use href="#c" x="314" y="484"/>
+      <use href="#c" x="258" y="458"/><use href="#c" x="296" y="460"/><use href="#c" x="330" y="462"/>
+      <use href="#c" x="240" y="440"/><use href="#c" x="276" y="434"/><use href="#c" x="312" y="438"/>
+      <use href="#c" x="258" y="410"/><use href="#c" x="296" y="412"/>
+    </g>
+    <path d="M220 322v168a14 14 0 0 0 14 14h108a14 14 0 0 0 14-14V322" fill="url(#glass)" stroke="#0E1A2E" stroke-width="7" stroke-linejoin="round"/>
+  </g>
+
+  <!-- săgeată: din fond spre împrumut -->
+  <path class="flow" d="M214 300c-30-34-70-34-96-6" fill="none" stroke="#0E1A2E" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 10"/>
+  <path d="M120 284l-6 14 15-1" fill="none" stroke="#0E1A2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- personajul -->
+  <g class="figura">
+    <!-- picioare -->
+    <path d="M418 368l-30 128h34l20-108z" fill="url(#pants)"/>
+    <path d="M452 368l26 128h-34l-22-110z" fill="url(#pants)"/>
+    <path d="M384 494h44v14h-56a8 8 0 0 1 12-14z" fill="#0E1A2E"/>
+    <path d="M444 494h44a8 8 0 0 1 8 14h-52z" fill="#0E1A2E"/>
+    <!-- trunchi -->
+    <path d="M396 220c0-14 12-24 26-24h44c16 0 28 12 28 28v148H396z" fill="url(#sweater)"/>
+    <!-- logo princar pe pulover -->
+    <g transform="translate(424 212) scale(.24) skewX(-12)" aria-label="logo princar">
+      <path d="M60 10H116A48 48 0 0 1 116 106H60Z" fill="#FF6A13"/>
+      <path d="M44 28H102A44 44 0 0 1 102 116H84V160H44Z" fill="#fff"/>
+      <path d="M60 64H94V50L124 72 94 94V80H60Z" fill="#0E1A2E"/>
+    </g>
+    <text x="446" y="270" text-anchor="middle" font-family="Poppins, Inter, sans-serif" font-style="italic" font-weight="600" font-size="12" fill="#fff">princar<tspan fill="#FF6A13">.ro</tspan></text>
+    <!-- brațul din spate ține un săculeț -->
+    <path d="M482 236c14 30 12 70-14 90" fill="none" stroke="#1B2A44" stroke-width="26" stroke-linecap="round"/>
+    <circle cx="460" cy="332" r="12" fill="#E3AE8C"/>
+    <path d="M438 318c0-14 10-22 22-22s22 8 22 22c8 4 12 12 12 22 0 16-16 26-34 26s-34-10-34-26c0-10 4-18 12-22z" fill="#FF8A2B"/>
+    <path d="M452 300l8 8 8-8" fill="none" stroke="#C04F0A" stroke-width="3" stroke-linecap="round"/>
+    <g transform="translate(460 336)" aria-label="însemn CAR CFR">
+      <clipPath id="hx"><path d="M-2.6 -13.5Q0.0 -15.0 2.6 -13.5L10.4 -9.0Q13.0 -7.5 13.0 -4.5L13.0 4.5Q13.0 7.5 10.4 9.0L2.6 13.5Q0.0 15.0 -2.6 13.5L-10.4 9.0Q-13.0 7.5 -13.0 4.5L-13.0 -4.5Q-13.0 -7.5 -10.4 -9.0Z"/></clipPath>
+      <g clip-path="url(#hx)"><rect x="-16" y="-16" width="11" height="32" fill="#1F4E9C"/><rect x="-5" y="-16" width="10" height="32" fill="#F7C600"/><rect x="5" y="-16" width="11" height="32" fill="#D52B1E"/></g>
+      <path d="M-2.6 -13.5Q0.0 -15.0 2.6 -13.5L10.4 -9.0Q13.0 -7.5 13.0 -4.5L13.0 4.5Q13.0 7.5 10.4 9.0L2.6 13.5Q0.0 15.0 -2.6 13.5L-10.4 9.0Q-13.0 7.5 -13.0 4.5L-13.0 -4.5Q-13.0 -7.5 -10.4 -9.0Z" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="10" fill="#0E1A2E">CAR</text>
+      <rect x="-13" y="13" width="26" height="10" rx="2.5" fill="#D52B1E" stroke="#fff" stroke-width="1"/>
+      <text x="0" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="7.5" fill="#fff">CFR</text>
+    </g>
+    <!-- gât și cap -->
+    <rect x="426" y="176" width="22" height="26" rx="8" fill="#E3AE8C"/>
+    <circle cx="436" cy="150" r="34" fill="#F2C8A8"/>
+    <g fill="#5B3A22">
+      <circle cx="414" cy="126" r="13"/><circle cx="430" cy="116" r="14"/><circle cx="448" cy="116" r="13"/><circle cx="462" cy="128" r="12"/>
+      <circle cx="468" cy="144" r="10"/><circle cx="404" cy="140" r="9"/>
+    </g>
+    <circle cx="418" cy="152" r="3.5" fill="#2A1A10"/>
+    <path d="M410 166c6 6 16 6 22 0" fill="none" stroke="#7A3B2A" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="414" cy="162" r="5" fill="#E58A6A" opacity=".5"/>
+    <!-- brațul din față întins spre fond -->
+    <g class="arm">
+      <path d="M408 232c-28 6-54 18-72 34" fill="none" stroke="url(#sweater)" stroke-width="28" stroke-linecap="round"/>
+      <circle cx="326" cy="274" r="14" fill="#F2C8A8"/>
+    </g>
+  </g>
+
+  <!-- moneda care cade în fond -->
+  <use class="drop" href="#c" x="300" y="292"/>
+</svg>

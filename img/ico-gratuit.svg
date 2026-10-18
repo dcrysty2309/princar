@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 150" fill="none" stroke="#1D2433" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><circle cx="78" cy="78" r="64" fill="#F6EDE3" stroke="none"/>
+<path d="M40 18h76v112l-9-7-10 7-9-7-10 7-10-7-9 7-10-7-9 7z" fill="#1D2433" stroke="none" transform="translate(-6 6)"/>
+<path d="M40 18h76v112l-9-7-10 7-9-7-10 7-10-7-9 7-10-7-9 7z" fill="#fff"/>
+<path d="M52 36h40M52 50h28M52 64h34" stroke="#BFD6E3" stroke-width="5"/>
+<path d="M52 78h52" stroke="#1D2433" stroke-width="3" stroke-dasharray="4 4"/>
+<text x="78" y="108" text-anchor="middle" font-family="Outfit, Poppins, Arial, sans-serif" stroke="none" font-weight="800" font-size="24" fill="#005D89">0 lei</text>
+<circle cx="130" cy="40" r="20" fill="#FFC960"/><path d="M121 40l6 7 12-14"/>
+</svg>

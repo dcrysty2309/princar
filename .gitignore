@@ -1,0 +1,8 @@
+# Date private (cereri, cont de admin)
+data/*.sqlite*
+data/admin.json
+# Note interne, nu fac parte din site
+docs/
+# Video-urile nu sunt folosite momentan pe site
+video/
+.DS_Store

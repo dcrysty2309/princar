@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Mascota princar.ro face cu mâna, lângă fondul social și o căsuță">
+  <defs>
+    <radialGradient id="mGlow" cx="50%" cy="48%" r="50%"><stop offset="0" stop-color="#FFE3CF"/><stop offset=".6" stop-color="#FFF1E6"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+    <linearGradient id="mCoin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC170"/><stop offset=".55" stop-color="#FF8A2B"/><stop offset="1" stop-color="#E5600E"/></linearGradient>
+    <linearGradient id="mSweater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22355A"/><stop offset="1" stop-color="#0E1A2E"/></linearGradient>
+    <linearGradient id="mPants" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9AA1AB"/><stop offset="1" stop-color="#7C838E"/></linearGradient>
+    <linearGradient id="mGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".2" stop-color="#fff" stop-opacity=".1"/><stop offset=".8" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
+    <g id="mC"><circle r="16" fill="url(#mCoin)"/><circle r="10.5" fill="none" stroke="#FFE2B8" stroke-width="2.5"/><rect x="-3" y="-6" width="6" height="12" rx="1.5" fill="#FFE2B8"/></g>
+    <clipPath id="mHx"><path d="M-2.6 -15.5Q0.0 -17.0 2.6 -15.5L12.1 -10.0Q14.7 -8.5 14.7 -5.5L14.7 5.5Q14.7 8.5 12.1 10.0L2.6 15.5Q0.0 17.0 -2.6 15.5L-12.1 10.0Q-14.7 8.5 -14.7 5.5L-14.7 -5.5Q-14.7 -8.5 -12.1 -10.0Z"/></clipPath>
+  </defs>
+
+  <!-- lumină discretă în spate -->
+  <ellipse cx="300" cy="300" rx="270" ry="250" fill="url(#mGlow)"/>
+  <ellipse cx="300" cy="556" rx="130" ry="14" fill="#0E1A2E" opacity=".08"/>
+
+  <!-- borcanul cu fondul social, stânga jos -->
+  <g class="m-jar" transform="translate(70 404)">
+    <g class="m-pile"><use href="#mC" x="30" y="122"/><use href="#mC" x="62" y="124"/><use href="#mC" x="94" y="122"/><use href="#mC" x="46" y="98"/><use href="#mC" x="78" y="100"/><use href="#mC" x="62" y="76"/></g>
+    <path d="M6 20v112a12 12 0 0 0 12 12h88a12 12 0 0 0 12-12V20" fill="url(#mGlass)" stroke="#0E1A2E" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="0" y="12" width="124" height="12" rx="6" fill="#0E1A2E"/>
+  </g>
+
+  <!-- căsuța, dreapta jos -->
+  <g class="m-house" transform="translate(430 430)">
+    <path d="M10 56l46-40 46 40v62H10z" fill="#fff" stroke="#0E1A2E" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M0 60l56-50 56 50" fill="none" stroke="#FF6A13" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="44" y="78" width="24" height="40" rx="4" fill="#0E1A2E"/>
+    <rect x="20" y="66" width="16" height="14" rx="3" fill="#FFD2B3"/><rect x="76" y="66" width="16" height="14" rx="3" fill="#FFD2B3"/>
+    <path class="m-heart" d="M56 -40c-5-8-18-7-18 3 0 8 11 15 18 20 7-5 18-12 18-20 0-10-13-11-18-3z" fill="#FF6A13"/>
+  </g>
+
+  <!-- monede care plutesc -->
+  <use class="m-coin c1" href="#mC" x="110" y="200"/>
+  <use class="m-coin c2" href="#mC" x="150" y="290"/>
+  <use class="m-coin c3" href="#mC" x="480" y="300"/>
+
+  <!-- mascota -->
+  <g class="m-body">
+    <!-- picioare -->
+    <path d="M262 404h34l-4 140h-28z" fill="url(#mPants)"/>
+    <path d="M304 404h34l-2 140h-28z" fill="url(#mPants)"/>
+    <path d="M256 540h40v16h-48a8 8 0 0 1 8-16z" fill="#0E1A2E"/>
+    <path d="M304 540h40a8 8 0 0 1 8 16h-48z" fill="#0E1A2E"/>
+    <!-- brațul stâng (al lui) ține săculețul -->
+    <path d="M240 276c-14 34-18 70-12 102" fill="none" stroke="url(#mSweater)" stroke-width="30" stroke-linecap="round"/>
+    <circle cx="228" cy="384" r="14" fill="#F2C8A8"/>
+    <g transform="translate(226 420)">
+      <path d="M-24 -12c0-14 10-22 24-22s24 8 24 22c8 4 12 12 12 24 0 18-16 28-36 28s-36-10-36-28c0-12 4-20 12-24z" fill="#FF8A2B"/>
+      <path d="M-8 -30l8 8 8-8" fill="none" stroke="#C04F0A" stroke-width="3" stroke-linecap="round"/>
+      <g transform="translate(0 10)">
+        <g clip-path="url(#mHx)"><rect x="-17" y="-17" width="11" height="34" fill="#1F4E9C"/><rect x="-6" y="-17" width="12" height="34" fill="#F7C600"/><rect x="6" y="-17" width="11" height="34" fill="#D52B1E"/></g>
+        <path d="M-2.6 -15.5Q0.0 -17.0 2.6 -15.5L12.1 -10.0Q14.7 -8.5 14.7 -5.5L14.7 5.5Q14.7 8.5 12.1 10.0L2.6 15.5Q0.0 17.0 -2.6 15.5L-12.1 10.0Q-14.7 8.5 -14.7 5.5L-14.7 -5.5Q-14.7 -8.5 -12.1 -10.0Z" fill="none" stroke="#fff" stroke-width="1.6"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="10.5" fill="#0E1A2E">CAR</text>
+        <rect x="-14" y="14" width="28" height="10" rx="2.5" fill="#D52B1E" stroke="#fff" stroke-width="1"/>
+        <text x="0" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="7.5" fill="#fff">CFR</text>
+      </g>
+    </g>
+    <!-- trunchi -->
+    <path d="M234 286c0-26 20-44 46-44h40c26 0 46 18 46 44v124H234z" fill="url(#mSweater)"/>
+    <!-- logo princar pe piept -->
+    <g transform="translate(278 280) scale(.26) skewX(-12)">
+      <path d="M60 10H116A48 48 0 0 1 116 106H60Z" fill="#FF6A13"/>
+      <path d="M44 28H102A44 44 0 0 1 102 116H84V160H44Z" fill="#fff"/>
+      <path d="M60 64H94V50L124 72 94 94V80H60Z" fill="#0E1A2E"/>
+    </g>
+    <text x="300" y="352" text-anchor="middle" font-family="Poppins, Inter, sans-serif" font-style="italic" font-weight="600" font-size="15" fill="#fff">princar<tspan fill="#FF6A13">.ro</tspan></text>
+    <!-- gât și cap -->
+    <rect x="286" y="214" width="28" height="34" rx="10" fill="#E3AE8C"/>
+    <g class="m-head">
+      <circle cx="246" cy="172" r="12" fill="#F2C8A8"/><circle cx="354" cy="172" r="12" fill="#F2C8A8"/>
+      <circle cx="300" cy="164" r="58" fill="#F2C8A8"/>
+      <g fill="#5B3A22"><circle cx="258" cy="128" r="20"/><circle cx="282" cy="112" r="22"/><circle cx="310" cy="108" r="22"/><circle cx="336" cy="118" r="20"/><circle cx="352" cy="138" r="15"/><circle cx="248" cy="146" r="13"/></g>
+      <path d="M268 150q10-7 20 0M312 150q10-7 20 0" fill="none" stroke="#5B3A22" stroke-width="4" stroke-linecap="round"/>
+      <g class="m-eyes" fill="#1B1410"><ellipse cx="278" cy="170" rx="6" ry="7.5"/><ellipse cx="322" cy="170" rx="6" ry="7.5"/></g>
+      <circle cx="266" cy="190" r="8" fill="#F08B6E" opacity=".35"/><circle cx="334" cy="190" r="8" fill="#F08B6E" opacity=".35"/>
+      <path d="M282 194q18 18 36 0" fill="#fff" stroke="#7A3B2A" stroke-width="3.5" stroke-linejoin="round"/>
+    </g>
+    <!-- brațul drept face cu mâna -->
+    <g class="m-wave">
+      <path d="M360 276c26 -10 46 -40 54 -84" fill="none" stroke="url(#mSweater)" stroke-width="30" stroke-linecap="round"/>
+      <g transform="translate(416 178)">
+        <circle r="17" fill="#F2C8A8"/>
+        <rect x="-15" y="-34" width="8" height="20" rx="4" fill="#F2C8A8"/><rect x="-6" y="-38" width="8" height="22" rx="4" fill="#F2C8A8"/><rect x="3" y="-36" width="8" height="21" rx="4" fill="#F2C8A8"/><rect x="11" y="-30" width="7" height="17" rx="3.5" fill="#F2C8A8"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- balonul de vorbă -->
+  <g transform="translate(408 70)"><g class="m-bubble">
+    <path d="M0 14a14 14 0 0 1 14-14h132a14 14 0 0 1 14 14v40a14 14 0 0 1-14 14H40l-18 18 2-18H14A14 14 0 0 1 0 54z" fill="#fff" stroke="#0E1A2E" stroke-width="2.5"/>
+    <text x="80" y="31" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="16" fill="#0E1A2E">Salut!</text>
+    <text x="80" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="12.5" fill="#FF6A13">Hai la CAR CFR</text>
+  </g></g>
+</svg>

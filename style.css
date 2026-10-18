@@ -1,0 +1,989 @@
+/* Măsuri luate după modelul Pinterest (design 1440px, container ~1240px) */
+
+/* Culori comutabile: data-theme pe <html> */
+:root,
+[data-theme="portocaliu"] {
+  --ink: #1F2125;
+  --ink-hover: #34373C;
+  --accent: #FF6A13;
+  --accent-2: #FF9A4D;
+  --grad-a: #FF6A13;
+  --grad-b: #FF9A3D;
+  --accent-soft: #FFEADC;
+  --accent-deep: #D9520A;
+  --tag: #FF6A13;
+  --pop: #CDEE5B;
+  --pop-ink: #1F2A05;
+  --ok: #3E9C6C;
+}
+[data-theme="albastru-rosu"] {
+  --ink: #005D89;
+  --ink-hover: #004A6E;
+  --accent: #005D89;
+  --accent-2: #3A93C4;
+  --grad-a: #004A6E;
+  --grad-b: #1E86BD;
+  --accent-soft: #E1EEF5;
+  --accent-deep: #003F5E;
+  --tag: #ED1C24;
+  --pop: #ED1C24;
+  --pop-ink: #FFFFFF;
+  --ok: #ED1C24;
+}
+[data-theme="albastru-auriu"] {
+  --ink: #005D89;
+  --ink-hover: #004A6E;
+  --accent: #005D89;
+  --accent-2: #3A93C4;
+  --grad-a: #004A6E;
+  --grad-b: #1E86BD;
+  --accent-soft: #E1EEF5;
+  --accent-deep: #003F5E;
+  --tag: #C98A1B;
+  --pop: #F1CF7E;
+  --pop-ink: #3D2A05;
+  --ok: #C98A1B;
+}
+:root {
+  --text: #1F2125;
+  --text-2: #4B4E54;
+  --muted: #6E7177;
+  --soft: #8C8F94;
+  --page: #F7F7F7;
+  --card: #F6F6F6;
+  --card-2: #EEEEEE;
+  --line: #E7E7E7;
+  --max: 1240px;
+  --font: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: var(--font); color: var(--text); background: #fff;
+  font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { font-weight: 500; letter-spacing: -0.035em; }
+h1 { font-size: clamp(2.2rem, 3.6vw, 3.25rem); line-height: 1.12; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.12; }
+h3 { font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; }
+.wrap { max-width: calc(var(--max) + 56px); margin: 0 auto; padding: 0 28px; }
+.section { padding: 110px 0; }
+.bg-gray { background: var(--page); }
+.soft { color: var(--soft); }
+.muted { color: var(--muted); }
+.grad { background: linear-gradient(90deg, var(--grad-a), var(--grad-b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.chev { display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg); margin-left: 3px; opacity: .55; }
+
+/* Etichetă deasupra titlurilor: pastilă albă cu iconiță și săgeată */
+.tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; border: 1px solid var(--line); border-radius: 999px;
+  padding: 4px 12px 4px 5px; font-size: .78rem; font-weight: 500; color: var(--text-2);
+  margin-bottom: 20px;
+}
+.tag i { width: 20px; height: 16px; border-radius: 5px; border: 1.5px solid var(--tag); background: color-mix(in srgb, var(--tag) 14%, #fff); position: relative; }
+.tag i::after { content: ""; position: absolute; left: 3px; right: 3px; top: 4px; height: 2px; background: var(--tag); border-radius: 2px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; border: 1px solid var(--line); border-radius: 999px;
+  padding: 4px 14px 4px 4px; font-size: .82rem; font-weight: 500; color: var(--text-2);
+}
+.pill b { display: inline-flex; align-items: center; gap: 6px; background: #0E1A2E; color: #fff; font-weight: 500; font-size: .74rem; padding: 3px 10px; border-radius: 999px; }
+.pill b::before { content: ""; width: 9px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: translateY(-1px) rotate(-45deg); }
+
+/* Butoane */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 52px; padding: 0 26px; border-radius: 12px;
+  font: 500 .95rem/1 var(--font); letter-spacing: -0.01em;
+  border: 1px solid transparent; cursor: pointer; transition: background .15s, transform .15s;
+}
+.btn:active { transform: scale(.98); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: var(--ink-hover); }
+.btn-white { background: #fff; color: var(--text); border-color: var(--line); }
+.btn-sm { height: 36px; padding: 0 14px; border-radius: 9px; font-size: .82rem; }
+
+/* Antet */
+.header { position: sticky; top: 0; z-index: 30; background: rgba(247,247,247,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.header .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+.logo { display: flex; align-items: center; }
+.brand { height: 40px; width: auto; display: block; }
+.brand-full { height: 86px; width: auto; display: block; margin-left: -6px; }
+.logo-mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--grad-b), var(--accent) 60%, var(--grad-a)); display: grid; place-items: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.08); }
+.logo-mark svg { width: 26px; height: 26px; }
+.wm { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.045em; color: var(--text); }
+.wm b { font-weight: 500; color: var(--accent); margin-left: 1px; }
+.nav { display: flex; gap: 40px; font-size: .95rem; color: var(--text-2); }
+.nav a:hover, .nav a.active { color: var(--text); }
+.header .btn { height: 48px; padding: 0 20px; font-size: .92rem; }
+.menu-btn { display: none; background: #fff; border: 1px solid var(--line); border-radius: 10px; width: 44px; height: 44px; font-size: 18px; cursor: pointer; }
+
+/* Hero */
+.hero { background: var(--page); padding: 64px 0 80px; }
+.hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+.hero .wrap > div:first-child { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 24px 0; }
+.hero h1 { margin: 26px 0; }
+.hero .lead { color: var(--muted); font-size: 1.06rem; line-height: 1.75; max-width: 31em; margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 14px; align-items: center; }
+.trust { display: flex; align-items: center; gap: 14px; margin-top: 64px; font-size: .82rem; color: var(--muted); }
+.avatars { display: flex; }
+.avatars span { width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #fff; margin-left: -10px; background: var(--card-2) center/cover; }
+.avatars span:first-child { margin-left: 0; }
+.stars { color: var(--accent); letter-spacing: 2px; font-size: 1rem; line-height: 1; }
+
+/* Cadrul cu linii fine și cerculețe în colțuri */
+.hero-art { position: relative; min-height: 540px; }
+.frame { position: absolute; inset: 0 2% 0 8%; border: 1px solid #E4E4E4; }
+.frame b { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: var(--page); border: 1px solid #DADADA; }
+.frame b:nth-child(1) { left: -6px; top: -6px; } .frame b:nth-child(2) { right: -6px; top: -6px; }
+.frame b:nth-child(3) { left: -6px; bottom: -6px; } .frame b:nth-child(4) { right: -6px; bottom: -6px; }
+.blob { position: absolute; right: 12%; top: 18%; width: 58%; height: 70%; background: #EDEDED; border-radius: 46% 54% 40% 60% / 50% 40% 60% 50%; transform: rotate(-12deg); }
+.person {
+  position: absolute; left: 8%; right: 2%; bottom: 0; top: 2%;
+  background: center bottom / contain no-repeat;
+  mix-blend-mode: multiply;
+  filter: brightness(1.13) contrast(1.06);   /* albul pozei devine alb pur și dispare */
+  -webkit-mask-image: linear-gradient(#000 90%, transparent);
+  mask-image: linear-gradient(#000 90%, transparent);
+}
+.fc { position: absolute; background: #fff; border-radius: 14px; box-shadow: 0 20px 40px -14px rgba(0,0,0,.16); font-size: .74rem; color: var(--muted); }
+.badge-ok { position: absolute; left: 14%; top: 30%; width: 50px; height: 50px; border-radius: 50%; background: var(--ok); display: grid; place-items: center; box-shadow: 0 0 0 12px color-mix(in srgb, var(--ok) 12%, transparent), 0 0 46px 22px color-mix(in srgb, var(--ok) 16%, transparent); }
+.badge-ok svg { width: 26px; height: 26px; }
+.coins { position: absolute; right: 9%; top: 9%; width: 86px; height: 66px; }
+.coins i { position: absolute; border-radius: 50%; background: radial-gradient(circle at 32% 28%, #FFFFFF 0, #D8D8D8 38%, #9C9C9C 100%); box-shadow: inset -3px -4px 6px rgba(0,0,0,.25), 0 6px 10px -4px rgba(0,0,0,.3); display: grid; place-items: center; color: #8E8E8E; font-style: normal; text-shadow: 0 1px 0 #fff; }
+.coins i:nth-child(1) { width: 56px; height: 56px; right: 0; top: 4px; font-size: 24px; }
+.coins i:nth-child(2) { width: 32px; height: 32px; left: 4px; top: 28px; font-size: 14px; }
+.coins s { position: absolute; left: 24px; top: 0; width: 8px; height: 8px; background: #BDBDBD; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.card-pop { position: absolute; right: 0; top: 47%; width: 34%; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 40px -14px rgba(0,0,0,.25); }
+.card-pop .top { background: var(--pop); color: var(--pop-ink); padding: 16px 16px 46px; font-size: .74rem; }
+.card-pop .top strong { display: block; font-size: 1.05rem; font-weight: 500; letter-spacing: .02em; margin-top: 4px; }
+.card-pop .bot { background: #1F2125; color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; font-weight: 700; font-style: italic; font-size: .9rem; letter-spacing: .02em; }
+.card-pop .bot span { font-style: normal; font-weight: 400; opacity: .8; font-size: .8rem; }
+.card-bal { left: 0; bottom: 6%; width: 45%; padding: 14px; }
+.card-bal .h { color: var(--text-2); font-size: .82rem; font-weight: 500; }
+.card-bal .v { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 12px; }
+.card-bal .v strong { color: var(--text); font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em; }
+.card-bal .v span { font-size: .62rem; white-space: nowrap; margin-left: 8px; }
+.card-bal .inner { background: var(--card); border-radius: 10px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; font-size: .66rem; }
+.card-bal .inner b { display: block; color: var(--text); font-size: .78rem; font-weight: 500; }
+.card-bal .inner em { font-style: italic; font-weight: 700; color: var(--accent); font-size: .85rem; }
+
+/* Partenerii CAR CFR */
+.logos { padding: 64px 0 10px; text-align: center; }
+.logos p { font-size: .95rem; font-weight: 500; color: var(--text); margin-bottom: 30px; }
+.logos .row { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1040px; margin: 0 auto; }
+.logos .row span { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 16px; border-left: 1px solid var(--line); }
+.logos .row span:first-child { border-left: 0; }
+.logos .row .pl { height: 34px; display: flex; align-items: center; justify-content: center; font-style: normal; filter: grayscale(1); opacity: .75; transition: filter .2s, opacity .2s; }
+.logos .row span:hover .pl { filter: none; opacity: 1; }
+.pl-bio { height: 22px; width: auto; color: #074F4F; }
+.pl-aff { height: 26px; width: auto; filter: brightness(0) opacity(.8); }   /* logo-ul lor e alb, pentru fundal închis */
+.pl-word { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.03em; color: #3A3D42; gap: 5px; }
+.pl-word em { font-style: normal; font-weight: 400; }
+.logos .row small { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+
+/* Antet secțiune în două coloane */
+.head2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: end; margin-bottom: 56px; }
+.head2 p { color: var(--muted); font-size: .95rem; line-height: 1.7; max-width: 27em; justify-self: end; }
+.head-c { text-align: center; max-width: 780px; margin: 0 auto 56px; }
+.head-c p { color: var(--muted); margin-top: 16px; font-size: .95rem; }
+
+/* 3 carduri gri */
+.feat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.feat .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 34px 30px 30px; }
+.feat .ico { width: 60px; height: 60px; margin-bottom: 30px; }
+.feat h3 { margin-bottom: 12px; }
+.feat p { color: var(--muted); font-size: .95rem; line-height: 1.65; max-width: 21em; }
+.feat .btn-sm { margin-top: 44px; }
+
+/* Despre noi */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+.about-art { position: relative; margin-right: 50px; }
+.about-art .ph { border-radius: 26px; aspect-ratio: 1 / .99; background: var(--card-2) center / cover; }
+.about-art .fc { right: -60px; bottom: 34px; width: 62%; padding: 18px; }
+.about-art .fc .t { color: var(--text); font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 12px; }
+.about-art .fc .box { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.about-art .fc .box p { font-size: .82rem; color: var(--text-2); margin-bottom: 12px; }
+.about-art .fc .box p b { color: var(--accent); font-weight: 500; }
+.about-art .fc .row { display: flex; align-items: center; gap: 12px; }
+.about-art .fc .avatars span { width: 30px; height: 30px; }
+.about-art .fc .row small { display: block; font-size: .66rem; color: var(--soft); }
+.about .lead { color: var(--muted); font-size: 1rem; line-height: 1.7; margin: 20px 0 30px; max-width: 33em; }
+.checks { list-style: none; padding: 0; margin: 0 0 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; font-size: .9rem; color: var(--text-2); }
+.checks li { display: flex; align-items: center; gap: 10px; }
+.checks li::before, .plan-body li::before {
+  content: ""; width: 20px; height: 20px; border-radius: 50%; flex: none;
+  background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.5L14 7.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;
+}
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 70px; }
+.stat { border-radius: 14px; padding: 20px 22px; background: #fff; }
+.stat strong { display: block; font-size: 1.75rem; font-weight: 500; letter-spacing: -0.03em; line-height: 1.2; }
+.stat span { font-size: .85rem; color: var(--muted); }
+
+/* Soluții: listă + poză */
+.solutions { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: start; }
+.acc details { border-bottom: 1px solid var(--line); padding: 30px 0; }
+.acc details:first-child { padding-top: 10px; }
+.acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-size: 1.375rem; letter-spacing: -0.02em; color: #6A6D72; }
+.acc summary::-webkit-details-marker { display: none; }
+.acc details[open] summary { color: var(--text); }
+.acc details[open] summary::after { content: "→"; font-size: 1.3rem; }
+.acc details p { color: var(--muted); font-size: .95rem; line-height: 1.7; margin-top: 14px; max-width: 32em; }
+.sol-art { position: relative; border-radius: 26px; aspect-ratio: 1 / .9; background: var(--card-2) center / cover; overflow: hidden; }
+.sol-art::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.45)); }
+.sol-art .over { position: absolute; left: 30px; bottom: 26px; z-index: 1; color: #fff; }
+.sol-art .over strong { display: block; font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; }
+.sol-art .over span { font-size: .78rem; opacity: .85; }
+
+/* Prețuri */
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; max-width: 840px; margin: 0 auto; }
+.plan { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.plan-top { padding: 28px 28px 30px; background: var(--card-2); }
+.plan.featured .plan-top { background: var(--accent); color: #fff; }
+.plan-top .name { display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 1.05rem; }
+.plan-top .name em { font-style: normal; font-weight: 500; font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; padding: 4px 9px; border-radius: 6px; background: var(--accent-deep); color: #fff; }
+.plan-top p { font-size: .88rem; opacity: .75; margin: 14px 0 28px; max-width: 20em; line-height: 1.5; }
+.plan-top .price { font-size: 2.6rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.plan-top .price small { font-size: .85rem; font-weight: 400; opacity: .7; letter-spacing: 0; margin-left: 6px; }
+.plan-top .btn { width: 100%; margin-top: 28px; height: 46px; font-size: .88rem; }
+.plan.featured .plan-top .btn { background: #fff; color: var(--text); }
+.plan-body { padding: 26px 28px 30px; }
+.plan-body b { font-size: .92rem; font-weight: 500; }
+.plan-body ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 15px; font-size: .88rem; color: var(--text-2); }
+.plan-body li { display: flex; gap: 12px; align-items: center; }
+
+/* Calculator cu grafice */
+.charts { display: grid; grid-template-columns: 1fr 1.6fr; gap: 26px; max-width: 1040px; margin: 0 auto; }
+.chart-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.chart-card h3 { font-size: 1.5rem; }
+.chart-card > p { color: var(--muted); font-size: .88rem; margin-top: 10px; line-height: 1.6; }
+.inner-card { background: #fff; border-radius: 14px; padding: 22px; margin-top: 24px; }
+.gauge { position: relative; max-width: 300px; margin: 6px auto 0; }
+.gauge svg { width: 100%; height: auto; display: block; overflow: visible; }
+.gauge .val { position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; }
+.gauge .val strong { display: block; font-size: 1.9rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.gauge .val span { font-size: .78rem; color: var(--muted); }
+.field { margin-top: 18px; }
+.field-top { display: flex; justify-content: space-between; font-size: .82rem; color: var(--muted); margin-bottom: 8px; }
+.field-top b { color: var(--text); font-weight: 500; }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+.bars-head { display: flex; justify-content: space-between; align-items: flex-start; }
+.bars-head .lbl { font-size: .82rem; color: var(--muted); }
+.bars-head strong { display: block; font-size: 1.9rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text); line-height: 1.25; }
+.bars-head .chip { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; color: var(--text-2); }
+.bars { display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; align-items: end; height: 210px; margin-top: 26px; }
+.bars div { display: flex; flex-direction: column; align-items: center; gap: 12px; height: 100%; justify-content: flex-end; font-size: .78rem; color: var(--muted); cursor: pointer; }
+.bars i { display: block; width: 100%; border-radius: 6px; background: #E6E6E6; transition: height .25s; position: relative; }
+.bars div.on i { background: linear-gradient(var(--accent), var(--accent-2)); }
+.bars div.on i::before { content: attr(data-v); position: absolute; top: -34px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-style: normal; font-size: .72rem; font-weight: 500; padding: 4px 8px; border-radius: 6px; white-space: nowrap; }
+.save { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; background: var(--accent-soft); border-radius: 12px; padding: 14px 18px; font-size: .86rem; color: var(--text-2); }
+.save strong { font-size: 1.15rem; font-weight: 600; color: var(--accent); }
+.note { font-size: .74rem; color: var(--soft); margin-top: 14px; line-height: 1.5; }
+
+/* Mărturii */
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.quote { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.quote p { font-size: .98rem; line-height: 1.7; color: var(--text-2); margin: 16px 0 26px; }
+.who { display: flex; align-items: center; gap: 12px; font-size: .82rem; color: var(--muted); }
+.who b { display: block; color: var(--text); font-weight: 500; font-size: .92rem; }
+.who span { width: 44px; height: 44px; border-radius: 50%; background: var(--card-2) center/cover; }
+
+/* Întrebări frecvente */
+.faq-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; }
+.faq .acc summary { font-size: 1.15rem; }
+.faq .acc summary::after { content: "+"; font-size: 1.5rem; font-weight: 300; }
+.faq .acc details[open] summary::after { content: "−"; font-size: 1.5rem; }
+
+/* Apel final */
+.cta { background: var(--ink); color: #fff; border-radius: 28px; padding: 72px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+.cta .soft { color: rgba(255,255,255,.5); }
+.cta p { color: rgba(255,255,255,.7); font-size: 1rem; margin-top: 18px; }
+.cta .btns { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+.cta .btn-white { border-color: transparent; }
+.cta .btn-line { color: #fff; border-color: rgba(255,255,255,.3); }
+
+/* Subsol */
+.footer { padding: 90px 0 36px; font-size: .9rem; color: var(--muted); }
+.footer .cols { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 32px; margin-bottom: 60px; }
+.footer h4 { color: var(--text); margin: 0 0 18px; font-size: .95rem; font-weight: 500; }
+.footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
+.footer a:hover { color: var(--text); }
+.footer .about-txt { margin-top: 18px; max-width: 24em; }
+.footer .legal { border-top: 1px solid var(--line); padding-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .8rem; }
+
+/* Pagina Contact */
+.page-head { background: var(--page); padding: 56px 0 64px; }
+.crumbs { font-size: .82rem; color: var(--muted); margin-bottom: 26px; }
+.crumbs a:hover { color: var(--text); }
+.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; }
+.form { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 36px; }
+.form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form label { display: block; font-size: .85rem; font-weight: 500; color: var(--text-2); margin-bottom: 8px; }
+.form input, .form select, .form textarea {
+  width: 100%; font: inherit; font-size: .92rem; height: 50px; padding: 0 16px;
+  border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--text); margin-bottom: 18px;
+}
+.form textarea { height: 130px; padding: 14px 16px; resize: vertical; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.consent { display: flex !important; gap: 10px; font-weight: 400 !important; font-size: .82rem !important; color: var(--muted) !important; margin: 2px 0 24px !important; }
+.consent input { width: auto; height: auto; margin: 3px 0 0; accent-color: var(--accent); }
+.form .btn { width: 100%; }
+.form-ok { display: none; background: var(--accent-soft); color: var(--text); padding: 14px; border-radius: 12px; margin-top: 14px; font-size: .88rem; }
+.contact-art { position: relative; border-radius: 24px; min-height: 100%; background: var(--card-2) center / cover; overflow: hidden; }
+.contact-art::after { content: ""; position: absolute; inset: 60% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.45)); }
+.contact-art .over { position: absolute; left: 30px; bottom: 26px; z-index: 1; color: #fff; }
+.contact-art .over strong { display: block; font-size: 1.6rem; font-weight: 500; letter-spacing: -0.03em; }
+.contact-art .over span { font-size: .8rem; opacity: .85; }
+.info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 26px; }
+.info-cards .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.info-cards .ico { width: 52px; height: 52px; margin-bottom: 26px; }
+.info-cards p { color: var(--muted); font-size: .92rem; margin-top: 8px; }
+.info-cards .btn-sm { margin-top: 26px; }
+
+/* Comutator de culori (doar pentru previzualizare) */
+.theme-switch { position: fixed; right: 16px; bottom: 16px; z-index: 50; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.12); font-size: .76rem; display: flex; flex-direction: column; gap: 6px; }
+.theme-switch b { padding: 0 4px 2px; }
+.theme-switch button { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 6px 10px; cursor: pointer; font: inherit; text-align: left; }
+.theme-switch button.on { border-color: var(--text); }
+.theme-switch i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .about-art { margin-right: 0; } .about-art .fc { right: 16px; }
+}
+@media (max-width: 980px) {
+  .hero .wrap, .about, .solutions, .charts, .head2, .cta, .faq-grid, .contact-grid { grid-template-columns: 1fr; }
+  .feat, .quotes, .info-cards { grid-template-columns: 1fr; }
+  .head2 p { justify-self: start; }
+  .footer .cols { grid-template-columns: 1fr 1fr; }
+  .section { padding: 76px 0; }
+  .cta { padding: 44px 28px; } .cta .btns { justify-content: flex-start; }
+  .contact-art { min-height: 340px; }
+  .logos .row { grid-template-columns: 1fr 1fr; row-gap: 22px; }
+  .logos .row span:nth-child(3) { border-left: 0; }
+}
+@media (max-width: 720px) {
+  .nav { display: none; position: absolute; top: 84px; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0; border-bottom: 1px solid var(--line); }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 20px; border-top: 1px solid var(--line); }
+  .menu-btn { display: block; }
+  .header .btn { display: none; }
+  .wrap { padding: 0 16px; }
+  .plans, .checks, .form .row { grid-template-columns: 1fr; }
+  .stat-row { grid-template-columns: 1fr 1fr; margin-top: 40px; }
+  .footer .cols { grid-template-columns: 1fr; }
+  .hero-art { min-height: 420px; }
+  .card-pop { width: 44%; } .card-bal { width: 56%; }
+  .about-art .fc { position: relative; right: auto; bottom: auto; width: auto; margin: -40px 16px 0; }
+
+  .bars { gap: 10px; }
+  .theme-switch { left: 16px; right: 16px; flex-direction: row; flex-wrap: wrap; }
+}
+
+/* Logo în antet cu „Partener oficial CAR CFR” dedesubt */
+.logo-stack { flex-direction: column; align-items: stretch; gap: 5px; width: 200px; }
+.logo-stack .brand { width: 100%; height: auto; }
+.logo-tag { display: flex; align-items: center; gap: 6px; color: #0E1A2E; font: 600 8.5px/1 var(--font); letter-spacing: .2em; white-space: nowrap; }
+.logo-tag i { flex: 1; height: 1px; background: #0E1A2E; min-width: 8px; }
+.logo-tag b { display: inline-flex; align-items: center; gap: 4px; background: #0E1A2E; color: #fff; letter-spacing: .02em; font-size: 9px; padding: 3px 7px 3px 3px; border-radius: 999px; }
+.logo-tag svg { width: 11px; height: 11px; color: #0E1A2E; }
+
+
+/* Hero animat: simulare de împrumut în loc de poză */
+.hero-art.anim { min-height: 600px; }
+.anim .glow { position: absolute; left: 12%; right: 4%; top: 6%; bottom: 6%; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 16%, transparent), transparent); filter: blur(10px); }
+.anim .dots { position: absolute; inset: 0 0 0 6%; background-image: radial-gradient(#D9D9D9 1.2px, transparent 1.3px); background-size: 22px 22px; -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent); mask-image: radial-gradient(closest-side, #000 40%, transparent); opacity: .7; }
+.sim { position: absolute; left: 6%; right: 14%; top: 4%; background: #fff; border-radius: 22px; padding: 24px 26px 20px; box-shadow: 0 30px 60px -24px rgba(14,26,46,.22); animation: rise .7s ease-out both; }
+.sim-head { display: flex; justify-content: space-between; align-items: center; font-size: .85rem; font-weight: 500; color: var(--text-2); }
+.sim-head em { font-style: normal; font-size: .72rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 4px 9px; border-radius: 999px; }
+.sim-amount { margin-top: 12px; font-size: 1.1rem; color: var(--muted); }
+.sim-amount strong { font-size: 2.7rem; font-weight: 600; letter-spacing: -0.04em; color: var(--text); font-variant-numeric: tabular-nums; }
+.sim-sub { font-size: .78rem; color: var(--soft); margin-top: 2px; }
+.sim-chart { width: 100%; height: auto; margin-top: 16px; overflow: visible; }
+.ln { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 360; stroke-dashoffset: 360; animation: draw 1.6s .4s ease-out forwards; }
+.ln-bank { stroke: #C3C6CC; }
+.ln-car { stroke: var(--accent); animation-delay: .9s; }
+.area { fill: var(--accent); opacity: 0; animation: fade .8s 2.2s forwards; }
+.pt { fill: var(--accent); opacity: 0; animation: fade .3s 2.4s forwards, pulse 2s 2.6s infinite; transform-box: fill-box; transform-origin: center; }
+.sim-legend { display: flex; gap: 18px; margin-top: 10px; font-size: .74rem; color: var(--muted); }
+.sim-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sim-legend i { width: 14px; height: 3px; border-radius: 2px; }
+.lg-bank { background: #C3C6CC; } .lg-car { background: var(--accent); }
+
+.anim .steps { left: 0; bottom: 2%; width: 46%; padding: 16px 18px; animation: rise .7s .5s ease-out both; }
+.steps-h { font-size: .8rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.steps ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.steps li { display: flex; align-items: center; gap: 10px; font-size: .78rem; color: var(--soft); transition: color .3s; }
+.steps li b { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #E2E2E2; flex: none; position: relative; transition: all .3s; }
+.steps li.on { color: var(--text); }
+.steps li.on b { border-color: var(--accent); background: var(--accent); }
+.steps li.on b::after { content: ""; position: absolute; left: 5px; top: 3px; width: 5px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.steps li.now b { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+
+.anim .card-pop { top: 60%; right: 0; animation: rise .7s .8s ease-out both; }
+.anim .safe { right: 2%; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-size: .72rem; animation: rise .7s 1.1s ease-out both; }
+.anim .safe b { display: block; color: var(--text); font-size: .78rem; font-weight: 600; }
+.anim .safe .lock { width: 32px; height: 32px; border-radius: 10px; background: #EAF5EF; color: var(--ok); display: grid; place-items: center; }
+.anim .safe svg { width: 16px; height: 16px; }
+.float { animation: rise .7s .8s ease-out both, bob 5s 1.6s ease-in-out infinite; }
+.float-2 { animation: rise .7s 1.1s ease-out both, bob 6s 2s ease-in-out infinite reverse; }
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade { to { opacity: .1; } }
+.pt { animation-name: fadeFull, pulse; }
+@keyframes fadeFull { to { opacity: 1; } }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) {
+  .anim *, .anim *::before, .anim *::after { animation: none !important; }
+  .ln { stroke-dashoffset: 0; } .area { opacity: .1; } .pt { opacity: 1; }
+}
+@media (max-width: 720px) {
+  .hero-art.anim { min-height: 500px; }
+  .sim { left: 0; right: 0; top: 0; }
+  .anim .steps { width: 58%; bottom: 0; padding: 14px; }
+  .anim .card-pop { top: auto; bottom: 0; right: 0; width: 39%; }
+  .anim .card-pop .top { padding: 14px 14px 28px; }
+  .anim .safe { display: none; }
+  .logo-stack { width: 170px; }
+}
+
+/* Eticheta „Partener oficial CAR CFR” de deasupra titlului */
+.pill-partner { padding: 5px 5px 5px 16px; gap: 12px; }
+.pill-partner > span { font-size: .74rem; font-weight: 600; letter-spacing: .2em; color: #0E1A2E; }
+.pill-partner b { background: #0E1A2E; gap: 6px; padding: 5px 12px 5px 5px; font-size: .78rem; font-weight: 600; }
+.pill-partner b::before { display: none; }
+.pill-partner svg { width: 18px; height: 18px; }
+
+/* Hero cu oameni reali decupați, pe fundal alb */
+.hero { background: #fff; }
+.hero-art.people { min-height: 560px; }
+.people .disc { position: absolute; left: 18%; right: 0; top: 12%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 45%, var(--accent-soft), color-mix(in srgb, var(--accent-soft) 35%, #fff) 70%, #fff 71%); }
+.people .couple { position: absolute; right: 0; bottom: 0; width: 90%; height: auto; animation: rise .8s ease-out both; }
+.people .approved { left: 0; top: 4%; display: flex; align-items: center; gap: 12px; padding: 14px 18px 14px 14px; font-size: .78rem; animation: rise .7s .4s ease-out both; }
+.people .approved b { display: block; color: var(--text); font-size: .92rem; font-weight: 600; }
+.people .approved strong { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+.people .ok-ico { width: 38px; height: 38px; border-radius: 50%; background: var(--ok); display: grid; place-items: center; box-shadow: 0 0 0 6px color-mix(in srgb, var(--ok) 15%, transparent); }
+.people .ok-ico svg { width: 22px; height: 22px; }
+.people .card-pop { top: 0; right: 0; width: 29%; }
+.people .rate-chip { left: 0; top: 27%; display: flex; align-items: center; gap: 10px; padding: 10px 14px 10px 10px; font-size: .72rem; }
+.people .rate-chip em { font-style: normal; font-weight: 700; font-size: .95rem; color: #fff; background: var(--accent); border-radius: 10px; padding: 6px 8px; }
+.people .rate-chip b { display: block; color: var(--text); font-size: .8rem; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .people * { animation: none !important; } }
+@media (max-width: 720px) {
+  .hero-art.people { min-height: 380px; }
+  .people .approved { top: 0; padding: 10px 12px 10px 10px; }
+  .people .card-pop { top: 0; width: 38%; }
+  .people .approved { top: auto; bottom: 2%; }
+  .people .card-pop .top { padding: 12px 12px 24px; }
+  .people .rate-chip { display: none; }
+}
+
+/* „Partener oficial CAR CFR” ca în logo: linii în lateral, fără chenar */
+.partner-line { display: inline-flex; align-items: center; gap: 14px; color: #0E1A2E; }
+.partner-line i { width: 44px; height: 1.5px; background: #0E1A2E; }
+.partner-line > span { font-size: .8rem; font-weight: 600; letter-spacing: .24em; }
+.partner-line b { display: inline-flex; align-items: center; gap: 7px; background: #0E1A2E; color: #fff; font-size: .82rem; font-weight: 600; padding: 6px 14px 6px 6px; border-radius: 999px; }
+.partner-line svg { width: 20px; height: 20px; }
+@media (max-width: 720px) { .partner-line i { width: 18px; } .partner-line > span { letter-spacing: .14em; font-size: .7rem; } }
+
+/* Hero ca la IFN-uri: cuplu real cu cheile, pe alb, carduri mici în dreapta */
+.hero-art.keys { min-height: 560px; }
+.keys .blob-soft { position: absolute; left: 0; right: 24%; top: 6%; bottom: 6%; border-radius: 48% 52% 44% 56% / 55% 45% 55% 45%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 20%, #fff), color-mix(in srgb, var(--accent) 6%, #fff) 70%, #fff); }
+.keys .floor { position: absolute; left: 2%; right: 32%; bottom: 0; height: 26px; border-radius: 50%; background: radial-gradient(closest-side, rgba(14,26,46,.14), transparent); }
+.keys .couple { position: absolute; left: -2%; bottom: 6px; width: 72%; height: auto; animation: rise .8s ease-out both; }
+.keys .side { position: absolute; right: 0; top: 10%; display: grid; gap: 14px; justify-items: end; }
+.keys .mini { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 14px; padding: 12px 16px; box-shadow: 0 18px 40px -16px rgba(14,26,46,.25); font-size: .8rem; color: var(--muted); }
+.keys .mini b { display: block; color: var(--text); font-weight: 600; font-size: .86rem; }
+.keys .mini small { font-size: .74rem; }
+.keys .lime { background: var(--pop); color: var(--pop-ink); flex-direction: column; align-items: flex-start; gap: 2px; padding: 16px 22px; min-width: 170px; }
+.keys .lime strong { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+.keys .ok { width: 30px; height: 30px; border-radius: 50%; background: var(--ok); display: grid; place-items: center; box-shadow: 0 0 0 5px color-mix(in srgb, var(--ok) 15%, transparent); }
+.keys .ok svg { width: 18px; height: 18px; }
+.keys .pct { font-style: normal; font-weight: 700; font-size: .85rem; color: #fff; background: #0E1A2E; border-radius: 8px; padding: 6px 7px; }
+.keys .side > :nth-child(1) { animation: rise .6s .3s ease-out both, bob 5s 1.2s ease-in-out infinite; }
+.keys .side > :nth-child(2) { animation: rise .6s .5s ease-out both, bob 6s 1.4s ease-in-out infinite reverse; }
+.keys .side > :nth-child(3) { animation: rise .6s .7s ease-out both, bob 5.5s 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .keys * { animation: none !important; } }
+@media (max-width: 720px) {
+  .hero-art.keys { min-height: 400px; }
+  .keys .couple { width: 92%; }
+  .keys .side { top: 0; gap: 8px; }
+  .keys .side > :nth-child(3) { display: none; }
+  .keys .mini { padding: 9px 12px; }
+  .keys .lime { min-width: 0; padding: 12px 14px; }
+}
+
+/* Hero cu podea: oamenii mari stau pe o podea deschisă care ține toată lățimea */
+.hero.hero-floor { position: relative; padding: 0; overflow: hidden; background: linear-gradient(#fff, #FBFAF8); }
+.hero-floor .wrap { position: relative; z-index: 1; min-height: 640px; align-items: stretch; }
+.hero-floor .wrap > div:first-child { padding: 56px 0 150px; }
+.floor-band { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; z-index: 0;
+  background:
+    linear-gradient(rgba(0,0,0,.05), transparent 14px),
+    repeating-linear-gradient(90deg, transparent 0 179px, rgba(120,90,60,.10) 179px 180px),
+    linear-gradient(#EFE5D8, #E6D8C6); }
+.floor-band::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: rgba(120,90,60,.18); }
+.hero-art.keys { min-height: 0; height: 100%; }
+.keys .blob-soft { left: 2%; right: 26%; top: 12%; bottom: 90px; }
+.keys .couple { left: -8%; bottom: 34px; width: auto; height: 84%; max-width: 74%; object-fit: contain; object-position: left bottom; z-index: 1; filter: drop-shadow(0 18px 18px rgba(60,40,20,.18)); }
+.keys .side { right: 0; top: 16%; gap: 22px; z-index: 2; }
+.keys .mini { padding: 14px 20px; border-radius: 16px; font-size: .84rem; min-width: 210px; }
+.keys .mini b { font-size: .92rem; }
+.keys .lime { min-width: 190px; padding: 18px 24px; }
+.keys .lime strong { font-size: 1.7rem; }
+@media (max-width: 980px) {
+  .hero-floor .wrap { min-height: 0; }
+  .hero-floor .wrap > div:first-child { padding: 40px 0 10px; }
+  .hero-art.keys { height: 520px; }
+}
+@media (max-width: 720px) {
+  .floor-band { height: 80px; }
+  .hero-art.keys { height: 420px; }
+  .keys .couple { height: 78%; max-width: 100%; left: -2%; bottom: 26px; }
+  .keys .side { top: 0; gap: 10px; }
+  .keys .mini { min-width: 0; padding: 10px 14px; }
+  .keys .lime { min-width: 0; padding: 12px 16px; }
+  .keys .lime strong { font-size: 1.3rem; }
+}
+
+@media (max-width: 720px) {
+  .keys .side > :nth-child(2) { display: none; }
+  .hero-actions { flex-wrap: wrap; }
+  .hero-actions .btn { white-space: nowrap; padding: 0 20px; }
+}
+
+/* Hero după modelul original: cuplu mare în picioare, cartonașe în jur */
+.hero.hero-model { padding: 0; background: #fff; overflow: hidden; }
+.hero-model .wrap { min-height: 620px; align-items: stretch; }
+.hero-model .wrap > div:first-child { padding: 56px 0 72px; }
+.hero-art.model { min-height: 0; height: 100%; }
+.model .circle { position: absolute; left: 6%; right: 2%; top: 10%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #F4ECE4 0, #EFE5DB 55%, #EADFD3 100%); }
+.model .couple { position: absolute; left: 0; right: 0; bottom: 0; width: 104%; max-width: none; margin-left: -2%; height: auto; animation: rise .8s ease-out both; }
+.model .badge-ok { left: 4%; top: 30%; z-index: 2; }
+.model .coins { right: 6%; top: 8%; }
+.model .card-pop { right: -2%; top: 40%; width: 30%; z-index: 2; }
+.model .card-bal { left: -8%; bottom: 3%; width: 38%; z-index: 2; }
+@media (max-width: 980px) {
+  .hero-model .wrap { min-height: 0; }
+  .hero-model .wrap > div:first-child { padding: 40px 0 10px; }
+  .hero-art.model { height: 460px; }
+}
+@media (max-width: 720px) {
+  .hero-art.model { height: 360px; }
+  .model .card-bal, .model .coins { display: none; }
+  .model .card-pop { top: 6%; width: 38%; right: 0; }
+  .model .badge-ok { top: 10%; left: 2%; }
+}
+
+/* Hero cu formă organică: oamenii în formă, capetele ies ușor peste ea */
+.hero.hero-blob { padding: 36px 0 56px; background: #fff; overflow: hidden; }
+.hero-blob .wrap { align-items: center; }
+.hero-art.blobart { min-height: 0; width: 100%; max-width: 600px; aspect-ratio: 1; justify-self: end; }
+.blob-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.b-or { fill: none; stroke: var(--accent); stroke-width: 16; stroke-linecap: round; stroke-dasharray: 900 2000; stroke-dashoffset: -250; animation: swoosh 1.6s .2s ease-out both; }
+.b-nv { fill: none; stroke: #0E1A2E; stroke-width: 12; stroke-linecap: round; stroke-dasharray: 520 2000; stroke-dashoffset: -60; animation: swoosh 1.6s .5s ease-out both; }
+@keyframes swoosh { from { stroke-dasharray: 0 2000; } }
+.person-wrap { position: absolute; inset: 0;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20600%20600%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M318%2048C452%2044%20556%20150%20552%20300C548%20452%20438%20552%20300%20552C176%20552%2078%20470%2070%20352C64%20262%20104%20214%20150%20186C206%20152%20204%2052%20318%2048Z%22/%3E%3C/svg%3E"), linear-gradient(#000 0 34%, transparent 34%);
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20600%20600%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M318%2048C452%2044%20556%20150%20552%20300C548%20452%20438%20552%20300%20552C176%20552%2078%20470%2070%20352C64%20262%20104%20214%20150%20186C206%20152%20204%2052%20318%2048Z%22/%3E%3C/svg%3E"), linear-gradient(#000 0 34%, transparent 34%);
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.person-wrap img { position: absolute; left: -12%; bottom: 3%; width: 124%; height: auto; max-width: none; animation: rise .8s ease-out both; }
+.blobart .dot { position: absolute; border-radius: 50%; background: var(--accent); }
+.blobart .d1 { width: 10px; height: 10px; right: 14%; top: 14%; }
+.blobart .d2 { width: 7px; height: 7px; left: 10%; top: 52%; background: #0E1A2E; }
+.blobart .ring { position: absolute; border-radius: 50%; border: 3px solid var(--accent); }
+.blobart .r1 { width: 22px; height: 22px; right: 2%; top: 26%; }
+.blobart .r2 { width: 14px; height: 14px; left: 18%; top: 8%; border-color: #0E1A2E; }
+.blobart .card-pop { right: -4%; top: 56%; width: 30%; z-index: 2; }
+@media (prefers-reduced-motion: reduce) { .blobart * { animation: none !important; } }
+@media (max-width: 980px) { .hero-art.blobart { justify-self: center; max-width: 520px; } }
+@media (max-width: 720px) { .blobart .card-pop { right: 0; top: 64%; width: 40%; } }
+
+/* Hero ilustrat: pui în fondul social, primești împrumutul */
+.hero.hero-illus { padding: 76px 0 60px; background: #fff; overflow: hidden; }
+.hero-illus .wrap { align-items: center; }
+.hero-art.illus { min-height: 0; width: 100%; max-width: 640px; justify-self: end; }
+.illus-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.illus .drop { transform-box: fill-box; transform-origin: center; animation: coinDrop 2.6s 1s ease-in infinite; }
+@keyframes coinDrop { 0% { transform: translate(0,0); opacity: 0; } 8% { opacity: 1; } 55% { transform: translate(-12px,120px); opacity: 1; } 62%,100% { transform: translate(-12px,128px); opacity: 0; } }
+.illus .arm { transform-box: fill-box; transform-origin: 100% 0; animation: armSway 2.6s 1s ease-in-out infinite; }
+@keyframes armSway { 0%,100% { transform: rotate(0); } 12% { transform: rotate(-6deg); } 30% { transform: rotate(2deg); } }
+.illus .pile { transform-box: fill-box; transform-origin: center bottom; animation: pileBump 2.6s 1s ease-out infinite; }
+@keyframes pileBump { 0%,52% { transform: scaleY(1); } 58% { transform: scaleY(1.04); } 66%,100% { transform: scaleY(1); } }
+.illus .house { transform-box: fill-box; transform-origin: center bottom; animation: houseUp 2.6s 1s ease-in-out infinite; }
+@keyframes houseUp { 0%,60% { transform: translateY(0); } 74% { transform: translateY(-10px); } 90%,100% { transform: translateY(0); } }
+.illus .heart { transform-box: fill-box; transform-origin: center; animation: pulse 2.6s 1s ease-in-out infinite; }
+.illus .flow { animation: flowDash 1.2s linear infinite; }
+@keyframes flowDash { to { stroke-dashoffset: -24; } }
+.illus .tag-jar { position: absolute; bottom: 4%; transform: translateX(-50%); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: .78rem; font-weight: 600; color: #0E1A2E; white-space: nowrap; box-shadow: 0 10px 24px -14px rgba(14,26,46,.3); }
+.illus .t-loan { left: 18%; } .illus .t-fund { left: 48%; }
+.illus .card-pop { left: 0; top: 6%; width: 28%; z-index: 2; }
+@media (prefers-reduced-motion: reduce) { .illus * { animation: none !important; } }
+@media (max-width: 980px) { .hero-art.illus { justify-self: center; } }
+@media (max-width: 720px) { .illus .card-pop { width: 38%; } .illus .tag-jar { font-size: .68rem; padding: 4px 9px; } }
+
+.illus .sw1, .illus .sw2 { animation: swoosh 1.6s .2s ease-out both; }
+.illus .sw2 { animation-delay: .5s; }
+
+/* Cartonașe care umplu zona din stânga-sus a formei */
+.illus .month-chip { display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; font-size: .74rem; color: var(--muted); z-index: 2; animation: rise .6s .6s ease-out both, bob 5.5s 1.4s ease-in-out infinite; }
+.illus .month-chip b { display: block; color: var(--text); font-size: .86rem; font-weight: 600; }
+.illus .month-chip:not(.loan-chip) { left: 6%; top: 8%; }
+.illus .loan-chip { left: 22%; top: 26%; animation: rise .6s .9s ease-out both, bob 6s 1.8s ease-in-out infinite reverse; }
+.illus .coin-ico { width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFC170, #FF8A2B 60%, #E5600E); box-shadow: inset 0 0 0 4px rgba(255,226,184,.7); }
+.illus .ok-ico { width: 34px; height: 34px; border-radius: 50%; background: var(--ok); display: grid; place-items: center; }
+.illus .ok-ico svg { width: 20px; height: 20px; }
+@media (max-width: 720px) {
+  .hero.hero-illus { padding-top: 44px; }
+  .illus .loan-chip { display: none; }
+  .illus .month-chip:not(.loan-chip) { left: 0; top: 2%; }
+}
+
+/* Însemnul „În parteneriat cu CAR CFR” în colțul liber al ilustrației */
+.illus .partner-badge { left: 4%; top: 10%; display: flex; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; z-index: 2; animation: rise .6s .5s ease-out both; }
+.illus .car-emb { width: 44px; height: 48px; flex: none; }
+.illus .partner-badge small { display: block; font-size: .7rem; color: var(--muted); letter-spacing: .02em; }
+.illus .partner-badge b { display: block; font-size: 1.05rem; font-weight: 700; color: #0E1A2E; letter-spacing: -0.01em; line-height: 1.2; }
+.illus .partner-badge em { display: block; font-style: normal; font-size: .72rem; color: var(--accent); font-weight: 600; }
+@media (max-width: 720px) { .illus .partner-badge { left: 0; top: 0; padding: 8px 12px 8px 8px; } .illus .car-emb { width: 34px; height: 38px; } }
+
+/* Cadru fin cu cerculețe în colțuri, aliniat sus-jos cu textul din stânga */
+.hero-illus .wrap { align-items: stretch; }
+.hero-illus .wrap > div:first-child { padding: 0; justify-content: space-between; }
+.hero-art.illus { display: flex; align-items: center; justify-content: center; padding: 26px 30px; }
+.illus .frame { position: absolute; inset: 0; border: 1px solid #E2E2E2; pointer-events: none; z-index: 0; }
+.illus .frame b { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 1px solid #D4D4D4; }
+.illus .frame b:nth-child(1) { left: -6.5px; top: -6.5px; } .illus .frame b:nth-child(2) { right: -6.5px; top: -6.5px; }
+.illus .frame b:nth-child(3) { left: -6.5px; bottom: -6.5px; } .illus .frame b:nth-child(4) { right: -6.5px; bottom: -6.5px; }
+.illus .illus-svg { position: relative; z-index: 1; max-height: 100%; }
+.illus .tag-jar { z-index: 2; bottom: 6%; }
+@media (max-width: 980px) { .hero-illus .wrap > div:first-child { padding: 0 0 10px; } .hero-art.illus { padding: 20px; } }
+@media (max-width: 720px) { .hero-art.illus { padding: 16px 12px; } }
+
+/* Mascota princar.ro: centrată, face cu mâna, clipește, respiră */
+.illus .mascot .m-body { transform-box: fill-box; transform-origin: center bottom; animation: mBreathe 4s ease-in-out infinite; }
+@keyframes mBreathe { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.illus .mascot .m-wave { transform-box: view-box; transform-origin: 362px 276px; animation: mWave 3.2s ease-in-out infinite; }
+@keyframes mWave { 0%,40%,100% { transform: rotate(0); } 50% { transform: rotate(-14deg); } 60% { transform: rotate(8deg); } 70% { transform: rotate(-12deg); } 80% { transform: rotate(4deg); } }
+.illus .mascot .m-eyes { transform-box: fill-box; transform-origin: center; animation: mBlink 4.5s infinite; }
+@keyframes mBlink { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+.illus .mascot .m-coin { transform-box: fill-box; transform-origin: center; animation: mFloat 3.6s ease-in-out infinite; }
+.illus .mascot .c2 { animation-delay: .8s; } .illus .mascot .c3 { animation-delay: 1.6s; }
+@keyframes mFloat { 0%,100% { transform: translateY(0) scaleX(1); } 25% { transform: translateY(-10px) scaleX(.35); } 50% { transform: translateY(-14px) scaleX(1); } 75% { transform: translateY(-6px) scaleX(.35); } }
+.illus .mascot .m-heart { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-in-out infinite; }
+.illus .mascot .m-pile { transform-box: fill-box; transform-origin: center bottom; animation: pileBump 3.6s ease-out infinite; }
+.illus .mascot .m-bubble { transform-box: fill-box; transform-origin: 20% 100%; animation: mBubble .5s 1s cubic-bezier(.3,1.6,.5,1) both; }
+@keyframes mBubble { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.illus .t-fund { left: 22%; } .illus .t-loan { left: 81%; }
+@media (prefers-reduced-motion: reduce) { .illus .mascot * { animation: none !important; } }
+
+/* Hero ca în model: om real centrat în cadru + cartonașe despre fond și împrumut */
+.hero-art.om { position: relative; display: block; padding: 0; min-height: 560px; overflow: visible; }
+.om .frame { position: absolute; inset: 0; border: 1px solid #E2E2E2; pointer-events: none; }
+.om .frame b { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 1px solid #D4D4D4; }
+.om .frame b:nth-child(1) { left: -6.5px; top: -6.5px; } .om .frame b:nth-child(2) { right: -6.5px; top: -6.5px; }
+.om .frame b:nth-child(3) { left: -6.5px; bottom: -6.5px; } .om .frame b:nth-child(4) { right: -6.5px; bottom: -6.5px; }
+.om .om-glow { position: absolute; left: 14%; right: 14%; top: 14%; bottom: 0; border-radius: 50% 50% 0 0; background: radial-gradient(ellipse at 50% 60%, #FFE7D6, #FFF6EF 60%, transparent 75%); }
+.om .om-photo { position: absolute; left: 50%; bottom: 0; height: 94%; width: auto; transform: translateX(-50%); z-index: 1; }
+.om .om-ok { left: 10%; top: 30%; z-index: 2; }
+.om .om-coins { position: absolute; right: 12%; top: 8%; width: 86px; height: 66px; z-index: 2; animation: bob 5s ease-in-out infinite; }
+.om .om-coins i { position: absolute; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFD39A, #FF8A2B 55%, #E5600E); box-shadow: inset 0 0 0 5px rgba(255,226,184,.6), 0 8px 14px -6px rgba(229,96,14,.5); }
+.om .om-coins i:nth-child(1) { width: 56px; height: 56px; right: 0; top: 4px; }
+.om .om-coins i:nth-child(2) { width: 34px; height: 34px; left: 4px; top: 30px; }
+.om .om-loan { position: absolute; right: -4%; top: 34%; width: 34%; border-radius: 16px; overflow: hidden; z-index: 3; box-shadow: 0 22px 44px -16px rgba(14,26,46,.3); animation: rise .6s .4s ease-out both, bob 6s 1.4s ease-in-out infinite; }
+.om .om-loan .top { background: var(--pop); color: var(--pop-ink); padding: 16px 18px 40px; font-size: .78rem; }
+.om .om-loan .top strong { display: block; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.om .om-loan .bot { background: #1F2125; color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; font-weight: 700; font-style: italic; font-size: .92rem; }
+.om .om-loan .bot span { font-style: normal; font-weight: 500; font-size: .74rem; opacity: .85; }
+.om .om-fund { left: -6%; bottom: 7%; width: 46%; padding: 16px; z-index: 3; animation: rise .6s .7s ease-out both, bob 6.5s 1.7s ease-in-out infinite reverse; }
+.om .om-fund .h { color: var(--text-2); font-size: .88rem; font-weight: 500; }
+.om .om-fund .v { display: flex; justify-content: space-between; align-items: baseline; margin: 10px 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.om .om-fund .v strong { color: var(--text); font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; }
+.om .om-fund .v span { font-size: .72rem; color: var(--soft); }
+.om .om-fund .inner { background: var(--card); border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; font-size: .7rem; color: var(--muted); }
+.om .om-fund .inner b { display: block; color: var(--text); font-size: .86rem; font-weight: 500; margin: 2px 0; }
+.om .om-fund .car-emb { width: 34px; height: 37px; }
+@media (prefers-reduced-motion: reduce) { .om * { animation: none !important; } }
+@media (max-width: 980px) { .hero-art.om { min-height: 480px; } }
+@media (max-width: 720px) {
+  .hero-art.om { min-height: 400px; }
+  .om .om-loan { width: 42%; right: 0; top: 26%; } .om .om-loan .top { padding: 12px 12px 26px; } .om .om-loan .top strong { font-size: 1.15rem; }
+  .om .om-fund { left: 0; width: 60%; bottom: 4%; padding: 12px; } .om .om-fund .v strong { font-size: 1.05rem; }
+  .om .om-coins { display: none; } .om .om-ok { left: 4%; top: 18%; }
+}
+
+/* De ce princar.ro: trei motive scurte sub textul din hero */
+.hero .lead b { color: var(--text); font-weight: 600; }
+.why { list-style: none; padding: 0; margin: -14px 0 32px; display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: .9rem; color: var(--text-2); }
+.why li { display: flex; align-items: center; gap: 8px; }
+.why li::before { content: ""; width: 20px; height: 20px; border-radius: 50%; flex: none;
+  background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.5L14 7.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat; }
+.why b { color: var(--text); font-weight: 600; }
+@media (max-width: 720px) { .why { flex-direction: column; gap: 8px; margin-top: -10px; } }
+
+/* Rândul de încredere: cifre reale CAR CFR, fără poze și stele */
+.stats-trust { display: flex; gap: 0; align-items: stretch; }
+.stats-trust > div { padding: 0 26px; border-left: 1px solid var(--line); }
+.stats-trust > div:first-child { padding-left: 0; border-left: 0; }
+.stats-trust strong { display: block; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em; color: var(--text); line-height: 1.15; }
+.stats-trust span { font-size: .82rem; color: var(--muted); }
+@media (max-width: 720px) { .stats-trust > div { padding: 0 14px; } .stats-trust strong { font-size: 1.3rem; } }
+
+/* Hero fără persoană: cardurile devin compoziția principală */
+.om .om-glow { left: 6%; right: 6%; top: 8%; bottom: 8%; border-radius: 50%; background: radial-gradient(closest-side, #FFE7D6, #FFF6EF 65%, transparent); }
+.om .om-loan { left: 22%; right: auto; top: 20%; width: 56%; animation: rise .6s .2s ease-out both, bob 6s 1.2s ease-in-out infinite; }
+.om .om-loan .top { padding: 24px 26px 64px; font-size: .9rem; }
+.om .om-loan .top strong { font-size: 2.4rem; }
+.om .om-loan .bot { padding: 16px 26px; font-size: 1.05rem; }
+.om .om-fund { left: 6%; bottom: 10%; width: 50%; }
+.om .om-call { right: 6%; bottom: 22%; display: flex; align-items: center; gap: 10px; padding: 12px 16px 12px 12px; font-size: .74rem; color: var(--muted); z-index: 3; animation: rise .6s .9s ease-out both, bob 5.5s 1.9s ease-in-out infinite; }
+.om .om-call b { display: block; color: var(--text); font-size: .86rem; font-weight: 600; }
+.om .om-call .ok-ico { width: 32px; height: 32px; border-radius: 50%; background: var(--ok); display: grid; place-items: center; flex: none; }
+.om .om-call .ok-ico svg { width: 18px; height: 18px; }
+.om .om-ok { left: 10%; top: 12%; }
+.om .om-coins { right: 10%; top: 9%; }
+.btn-cta { height: 56px; padding: 0 30px; font-size: 1rem; }
+@media (max-width: 720px) {
+  .om .om-loan { left: 8%; width: 70%; top: 14%; } .om .om-loan .top { padding: 16px 18px 40px; } .om .om-loan .top strong { font-size: 1.7rem; }
+  .om .om-fund { left: 2%; width: 66%; bottom: 4%; } .om .om-call { display: none; }
+}
+
+/* Cum funcționează: 3 pași */
+.how-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; counter-reset: none; }
+.how-steps li { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px 30px; }
+.how-steps li:not(:last-child)::after { content: ""; position: absolute; top: 52px; right: -26px; width: 26px; height: 2px; background: repeating-linear-gradient(90deg, var(--accent) 0 6px, transparent 6px 11px); }
+.how-steps .n { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 22px; }
+.how-steps h3 { margin-bottom: 10px; }
+.how-steps p { color: var(--muted); font-size: .95rem; line-height: 1.65; }
+@media (max-width: 980px) { .how-steps { grid-template-columns: 1fr; } .how-steps li::after { display: none; } }
+
+/* Subsol: mențiunea parteneriatului */
+.footer .legal { flex-direction: column; }
+.partner-note { margin: 0; max-width: 60em; line-height: 1.6; color: var(--muted); }
+.partner-note b { color: var(--text); font-weight: 600; }
+
+/* Fereastra cu formularul scurt */
+.lead-modal { border: 0; padding: 0; border-radius: 22px; width: min(460px, calc(100% - 32px)); box-shadow: 0 40px 80px -20px rgba(14,26,46,.4); }
+.lead-modal::backdrop { background: rgba(14,26,46,.45); backdrop-filter: blur(3px); }
+.lead-form { position: relative; margin: 0; }
+.lead-body, .lead-ok { padding: 34px 32px 30px; }
+.lead-x { position: absolute; right: 14px; top: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--card); font-size: 22px; line-height: 1; cursor: pointer; color: var(--text-2); }
+.lead-body h2, .lead-ok h2 { font-size: 1.6rem; margin-bottom: 6px; }
+.lead-body .muted { font-size: .9rem; margin-bottom: 22px; }
+.lead-body label { display: block; font-size: .84rem; font-weight: 500; color: var(--text-2); margin-bottom: 7px; }
+.lead-body label .opt { color: var(--soft); font-weight: 400; }
+.lead-body label b { float: right; color: var(--text); }
+.lead-body input:not([type=checkbox]):not([type=range]) { width: 100%; height: 50px; padding: 0 16px; font: inherit; font-size: .95rem; border: 1px solid var(--line); border-radius: 12px; background: #fff; margin-bottom: 16px; }
+.lead-body input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.lead-body input[type=range] { width: 100%; margin: 4px 0 20px; }
+.lead-body .consent { display: flex !important; gap: 10px; font-weight: 400 !important; font-size: .78rem !important; color: var(--muted) !important; line-height: 1.5; margin-bottom: 14px !important; }
+.lead-body .consent input { margin-top: 3px; accent-color: var(--accent); flex: none; }
+.lead-err { color: #C62828; font-size: .82rem; min-height: 1.2em; margin: 0 0 10px; }
+.lead-body .btn { width: 100%; }
+.lead-ok { text-align: center; }
+.lead-ok .ok-ico { width: 56px; height: 56px; border-radius: 50%; background: var(--ok); display: inline-grid; place-items: center; margin-bottom: 14px; }
+.lead-ok .ok-ico svg { width: 30px; height: 30px; }
+.lead-ok .btn { margin-top: 20px; }
+.nw { white-space: nowrap; }
+
+/* Antet alb, hero gri */
+.header { background: rgba(255,255,255,.96); }
+.hero.hero-illus { background: var(--page); }
+.om .frame b { background: var(--page); }
+
+/* Hero: borcanul cu fondul social → împrumutul tău, plus cele două carduri */
+.hero-scene .om .om-scene { position: absolute; left: 6%; right: 6%; bottom: 9%; width: 88%; height: auto; z-index: 1; overflow: visible; }
+.hero-scene .om .s-tag { position: absolute; bottom: 3%; transform: translateX(-50%); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .76rem; font-weight: 600; color: #0E1A2E; white-space: nowrap; z-index: 2; }
+.hero-scene .om .t1 { left: 26%; } .hero-scene .om .t2 { left: 76%; }
+.hero-scene .om .om-fund { left: 5%; top: 7%; bottom: auto; width: 46%; }
+.hero-scene .om .om-loan { left: auto; right: 5%; top: 12%; width: 42%; }
+.hero-scene .om .om-loan .top { padding: 18px 20px 34px; font-size: .82rem; }
+.hero-scene .om .om-loan .top strong { font-size: 1.9rem; }
+.hero-scene .om .om-loan .bot { padding: 12px 20px; font-size: .95rem; }
+.hero-scene .om .om-glow { top: 20%; }
+.om .s-drop { transform-box: fill-box; transform-origin: center; animation: sDrop 2.8s 1s ease-in infinite; }
+@keyframes sDrop { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 55% { transform: translateY(100px); opacity: 1; } 62%,100% { transform: translateY(108px); opacity: 0; } }
+.om .s-pile { transform-box: fill-box; transform-origin: center bottom; animation: pileBump 2.8s 1s ease-out infinite; }
+.om .s-house { transform-box: fill-box; transform-origin: center bottom; animation: houseUp 2.8s 1s ease-in-out infinite; }
+.om .s-heart { transform-box: fill-box; transform-origin: center; animation: pulse 2.8s 1s ease-in-out infinite; }
+.om .s-flow { animation: flowDash 1.2s linear infinite; }
+@media (max-width: 720px) {
+  .hero-scene .om .om-fund { width: 56%; top: 4%; } .hero-scene .om .om-loan { width: 44%; top: 26%; }
+  .hero-scene .om .om-loan .top { padding: 12px 12px 22px; } .hero-scene .om .om-loan .top strong { font-size: 1.2rem; }
+  .hero-scene .om .s-tag { font-size: .66rem; padding: 4px 8px; }
+}
+
+/* Pașii ca infografic: chenare cu contur în degradeu, legate în diagonală */
+.flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 80px; max-width: 1120px; margin: 0 auto; }
+.flow-step { position: relative; text-align: center; padding: 40px 30px 36px; border-radius: 28px; border: 3px solid transparent; background: linear-gradient(#fff, #fff) padding-box, var(--g) border-box; box-shadow: 0 24px 40px -30px rgba(14,26,46,.35); }
+.flow-step.f1 { --g: linear-gradient(160deg, #F7B32B, #FF6A13 60%); --c: #FF6A13; }
+.flow-step.f2 { --g: linear-gradient(160deg, #2F6FDB, #0E1A2E 70%); --c: #2F6FDB; }
+.flow-step.f3 { --g: linear-gradient(160deg, #1FB7A6, #1FA77A 60%); --c: #1FA77A; }
+.flow-ico { width: 52px; height: 52px; color: var(--c); margin-bottom: 18px; }
+.flow-step h3 { color: var(--c); font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; }
+.flow-step p { color: var(--muted); font-size: .92rem; line-height: 1.7; }
+.flow-step .dot-out, .flow-step .dot-in { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--c); border: 4px solid #fff; box-shadow: 0 0 0 1px rgba(14,26,46,.06); z-index: 2; }
+.flow-step .dot-out { right: -11px; bottom: 16%; }
+.flow-step .dot-in { left: -11px; top: 16%; }
+.flow-link { position: absolute; left: 100%; top: 16%; width: 80px; height: 68%; overflow: visible; }
+@media (max-width: 980px) {
+  .flow { grid-template-columns: 1fr; gap: 56px; max-width: 520px; }
+  .flow-link { left: 50%; top: 100%; width: 4px; height: 56px; transform: none; }
+  .flow-link path { d: path("M2 0L2 200"); }
+  .flow-step .dot-out { right: auto; left: calc(50% - 9px); bottom: -11px; }
+  .flow-step .dot-in { left: calc(50% - 9px); top: -11px; }
+}
+@media (max-width: 720px) {
+  .hero-scene .om .om-fund { left: 3%; top: 5%; width: 50%; padding: 12px; }
+  .hero-scene .om .om-fund .inner { display: none; }
+  .hero-scene .om .om-fund .v { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+  .hero-scene .om .om-loan { right: 3%; top: 5%; width: 43%; }
+  .hero-scene .om .om-loan .bot { padding: 10px 12px; font-size: .78rem; }
+}
+
+/* Hero: doar animația cu fondul social, mare, pe tot cadrul */
+.hero-scene .om .om-scene { left: 5%; right: 5%; width: 90%; top: 50%; bottom: auto; transform: translateY(-56%); }
+.hero-scene .om .om-glow { top: 14%; bottom: 14%; }
+.hero-scene .om .s-tag { bottom: 7%; font-size: .82rem; padding: 6px 14px; }
+
+/* Titlul din hero pe exact două rânduri */
+.h1-2 { font-size: clamp(2rem, 3.1vw, 2.85rem); line-height: 1.15; }
+.h1-2 .ln { display: block; white-space: nowrap; }
+@media (max-width: 720px) { .h1-2 { font-size: clamp(1.55rem, 6.4vw, 2.1rem); } }
+
+/* Titlurile secțiunilor, în stilul „Partener oficial CAR CFR” */
+.eyebrow-line { display: inline-flex; align-items: center; gap: 14px; color: #0E1A2E; margin-bottom: 18px; }
+.eyebrow-line i { width: 40px; height: 1.5px; background: var(--accent); }
+.eyebrow-line span { font-size: .78rem; font-weight: 600; letter-spacing: .24em; }
+.head-c .eyebrow-line { justify-content: center; }
+.section h2 { color: #0E1A2E; font-weight: 600; letter-spacing: -0.03em; }
+.cta h2 { color: #fff; }
+
+/* Scena din hero: membrii pun monede pe rând în fond */
+.om .s-drop { animation: sDrop2 3.6s ease-in infinite; }
+.om .s-drop.d1 { animation-delay: .6s; } .om .s-drop.d2 { animation-delay: 1.8s; } .om .s-drop.d3 { animation-delay: 3s; }
+@keyframes sDrop2 { 0% { transform: translateY(0); opacity: 0; } 8% { opacity: 1; } 40% { transform: translateY(120px); opacity: 1; } 46%,100% { transform: translateY(128px); opacity: 0; } }
+.om .s-pile, .om .s-house, .om .s-heart { animation-duration: 1.2s; }
+.hero-scene .om .om-scene { transform: translateY(-52%); }
+
+/* Titlurile secțiunilor ca în exemplu: Poppins, medie, gri închis */
+.section h2 { font-family: "Poppins", var(--font); font-weight: 500; color: #2B2B2B; letter-spacing: -0.01em; line-height: 1.25; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.cta h2 { color: #fff; }
+/* Scena încape mereu în cadru: se potrivește după înălțime */
+.hero-scene .om .om-scene { top: 5%; bottom: auto; left: 50%; right: auto; height: 90%; width: auto; max-width: 94%; transform: translateX(-50%); }
+
+/* Beneficii: text în stânga, 4 carduri 2×2 în dreapta */
+.benefits { position: relative; overflow: hidden; }
+.benefits::before { content: ""; position: absolute; left: -4%; top: 6%; width: 56%; height: 88%; background-image: radial-gradient(#D9DCE1 1.3px, transparent 1.4px); background-size: 18px 18px; -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent); mask-image: radial-gradient(closest-side, #000 30%, transparent); opacity: .7; pointer-events: none; }
+.ben-grid { position: relative; display: grid; grid-template-columns: 1fr 1.15fr; gap: 70px; align-items: center; }
+.ben-text p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin: 18px 0 32px; max-width: 30em; }
+.btn-outline { background: #fff; color: #0E1A2E; border: 1.5px solid #0E1A2E; height: 50px; padding: 0 24px; }
+.btn-outline:hover { background: #0E1A2E; color: #fff; }
+.ben-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.ben-card { background: #fff; border-radius: 16px; padding: 34px 30px 30px; box-shadow: 0 30px 50px -30px rgba(14,26,46,.28), 0 2px 6px rgba(14,26,46,.04); transition: transform .2s, box-shadow .2s; }
+.ben-card:hover { transform: translateY(-4px); box-shadow: 0 36px 60px -30px rgba(14,26,46,.35), 0 2px 6px rgba(14,26,46,.05); }
+.ben-dot { display: block; width: 64px; height: 64px; border-radius: 50%; margin-bottom: 28px; background: conic-gradient(from 300deg, rgba(0,0,0,.18) 0 12%, transparent 12%), var(--dg); box-shadow: 0 10px 20px -10px var(--ds); }
+.ben-dot.c1 { --dg: linear-gradient(135deg, #FFC24A, #FF6A13); --ds: rgba(255,106,19,.6); }
+.ben-dot.c2 { --dg: linear-gradient(135deg, #5FD0F0, #2F6FDB); --ds: rgba(47,111,219,.6); }
+.ben-dot.c3 { --dg: linear-gradient(135deg, #B8E65A, #4FAF2E); --ds: rgba(79,175,46,.6); }
+.ben-dot.c4 { --dg: linear-gradient(135deg, #C48BF2, #7B4FE0); --ds: rgba(123,79,224,.6); }
+.ben-card h3 { font-family: "Poppins", var(--font); font-weight: 600; font-size: 1.12rem; color: #2B2B2B; line-height: 1.35; margin-bottom: 8px; }
+.ben-card p { color: var(--muted); font-size: .86rem; line-height: 1.5; }
+@media (max-width: 980px) { .ben-grid { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 560px) { .ben-cards { grid-template-columns: 1fr 1fr; gap: 14px; } .ben-card { padding: 22px 18px; } .ben-dot { width: 48px; height: 48px; margin-bottom: 18px; } .ben-card h3 { font-size: .95rem; } }
+
+/* Pașii: un singur contur, în portocaliul brandului */
+.flow-step.f1, .flow-step.f2, .flow-step.f3 { --g: linear-gradient(160deg, #FFB067, #FF6A13 55%); --c: #FF6A13; }
+.flow-step h3 { color: #0E1A2E; }
+.flow-ico { color: #FF6A13; }
+
+/* Scena completă: membri → fond → casă → cuplul cu cheile */
+.hero-scene .om .om-scene { top: 5%; height: 90%; max-width: 96%; }
+.om .s-drop { animation: sDrop3 3.6s ease-in infinite; }
+@keyframes sDrop3 { 0% { transform: translateY(0); opacity: 0; } 8% { opacity: 1; } 40% { transform: translateY(170px); opacity: 1; } 46%,100% { transform: translateY(178px); opacity: 0; } }
+.om .s-keys { transform-box: fill-box; transform-origin: 50% 0; animation: keys 2.4s ease-in-out infinite; }
+@keyframes keys { 0%,100% { transform: rotate(0); } 30% { transform: rotate(10deg); } 60% { transform: rotate(-8deg); } }
+@media (prefers-reduced-motion: reduce) { .om .s-keys { animation: none; } }
+
+/* Beneficii pe fundal bleumarin: listă + comparație princar.ro vs direct */
+.benefits-dark { background: #0E1A2E; }
+.benefits-dark .section h2, .benefits-dark h2 { color: #fff; }
+.eyebrow-line.light { color: #fff; }
+.eyebrow-line.light span { color: rgba(255,255,255,.85); }
+.bd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1120px; margin: 0 auto; align-items: stretch; }
+.bd-list { background: #fff; border-radius: 18px; padding: 10px; display: grid; gap: 8px; }
+.bd-item { border: 1px solid #EFEFEF; border-radius: 12px; padding: 22px 24px; }
+.bd-item h3 { font-family: "Poppins", var(--font); font-weight: 600; font-size: 1.05rem; color: #0E1A2E; margin-bottom: 8px; }
+.bd-item p { color: var(--muted); font-size: .88rem; line-height: 1.55; }
+.bd-plan { background: #fff; border-radius: 18px; padding: 32px 30px 28px; display: flex; flex-direction: column; }
+.bd-plan.featured { background: var(--accent); }
+.bd-name { font-family: "Poppins", var(--font); font-weight: 600; font-size: .95rem; letter-spacing: .02em; color: #0E1A2E; }
+.bd-plan > p { color: var(--muted); font-size: .9rem; line-height: 1.55; margin: 12px 0 22px; }
+.bd-plan.featured > p { color: rgba(14,26,46,.8); }
+.bd-price { display: flex; align-items: baseline; gap: 8px; background: #fff; border-radius: 999px; padding: 12px 20px; box-shadow: 0 6px 18px -10px rgba(14,26,46,.35); }
+.bd-plan:not(.featured) .bd-price { border: 1px solid #EFEFEF; box-shadow: none; }
+.bd-price strong { font-family: "Poppins", var(--font); font-size: 1.6rem; font-weight: 600; color: #0E1A2E; letter-spacing: -0.02em; }
+.bd-price span { font-size: .82rem; color: var(--muted); }
+.bd-plan ul { list-style: disc; padding-left: 20px; margin: 24px 0 28px; display: grid; gap: 12px; font-size: .92rem; color: #0E1A2E; }
+.bd-btn { margin-top: auto; display: flex; align-items: center; justify-content: space-between; width: 100%; height: 54px; padding: 0 8px 0 22px; border: 0; border-radius: 999px; background: #0E1A2E; color: #fff; font: 500 .92rem var(--font); cursor: pointer; transition: transform .15s; }
+.bd-btn:active { transform: scale(.98); }
+.bd-btn .arr { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; }
+.bd-plan.featured .bd-btn .arr { background: #fff; color: var(--accent); }
+.bd-btn .arr svg { width: 18px; height: 18px; }
+@media (max-width: 980px) { .bd-grid { grid-template-columns: 1fr; max-width: 520px; } }
+
+/* Hero: colaj cu 3 plăcuțe colorate, ca în exemplu */
+.hero-art.collage { position: relative; min-height: 560px; }
+.collage .tile { position: absolute; border-radius: 30px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+.collage .tile img { width: auto; max-width: 100%; height: 96%; object-fit: contain; object-position: bottom; }
+.collage .t-a { left: 10%; top: 0; width: 44%; height: 54%; background: #FFD3B4; }
+.collage .t-b { right: 0; top: 14%; width: 40%; height: 54%; background: #C9D8F0; }
+.collage .t-c { left: 2%; bottom: 0; width: 56%; height: 42%; background: #CDEBDD; }
+.collage .t-c img { height: 108%; margin-bottom: -6%; }
+.collage .c-badge { position: absolute; left: 48%; top: -3%; width: 78px; height: 78px; border-radius: 50%; background: #0E1A2E; border: 10px solid var(--page); display: grid; place-items: center; z-index: 2; }
+.collage .c-badge svg { width: 28px; height: 28px; }
+.collage .c-pill { position: absolute; left: 52%; bottom: 28%; z-index: 2; background: #FFD3B4; color: #0E1A2E; border: 8px solid var(--page); border-radius: 999px; padding: 10px 22px; font-family: "Poppins", var(--font); font-size: 1.05rem; font-weight: 500; white-space: nowrap; }
+.collage .c-pill b { color: var(--accent); font-weight: 700; }
+.collage .spark { position: absolute; width: 26px; height: 26px; background: var(--accent); clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+.collage .s1 { left: 0; top: 40%; } .collage .s2 { right: 12%; bottom: 20%; background: #0E1A2E; }
+.collage .c-dot { position: absolute; border-radius: 50%; }
+.collage .d1 { right: 6%; top: 2%; width: 16px; height: 16px; background: var(--accent); opacity: .7; }
+.collage .d2 { right: 18%; bottom: 6%; width: 22px; height: 22px; background: #9FB8E3; }
+.collage .tile, .collage .c-badge, .collage .c-pill { animation: rise .7s ease-out both; }
+.collage .t-b { animation-delay: .15s; } .collage .t-c { animation-delay: .3s; } .collage .c-badge { animation-delay: .45s; } .collage .c-pill { animation-delay: .6s; }
+@media (max-width: 980px) { .hero-art.collage { min-height: 480px; max-width: 560px; margin: 0 auto; width: 100%; } }
+@media (max-width: 720px) {
+  .hero-art.collage { min-height: 380px; }
+  .collage .c-badge { width: 58px; height: 58px; border-width: 7px; } .collage .c-badge svg { width: 22px; height: 22px; }
+  .collage .c-pill { font-size: .85rem; padding: 7px 14px; border-width: 6px; left: 50%; }
+}
+
+/* Hero pe alb, doar o linie fină jos; „Partener oficial” lipit de titlu */
+.hero.hero-collage { background: #fff; border-bottom: 1px solid var(--line); padding: 64px 0 72px; }
+.hero-collage .wrap { align-items: center; }
+.hero-collage .wrap > div:first-child { justify-content: center; padding: 0; }
+.hero-collage .partner-line { margin-bottom: 4px; }
+.hero-collage h1 { margin: 10px 0 22px; }
+.hero-collage .lead { margin-bottom: 34px; }
+.hero-collage .trust { margin-top: 52px; }
+.collage .c-badge { border-color: #fff; }
+.collage .c-pill { border-color: #fff; }
+
+/* Colaj: aceeași familie (credit → cheile casei → mutarea), plăcuțe orizontale */
+.collage .tile img { height: 94%; width: auto; max-width: 100%; }
+.collage .t-a { left: 0; top: 0; width: 56%; height: 46%; background: #FFD3B4; }
+.collage .t-b { right: 0; top: 20%; width: 41%; height: 38%; background: #C9D8F0; }
+.collage .t-c { left: 6%; bottom: 0; width: 56%; height: 40%; background: #FFE9C7; }
+.collage .t-c img { height: 94%; margin-bottom: 0; }
+.collage .c-badge { left: 51%; top: -4%; }
+.collage .c-pill { left: auto; right: 4%; bottom: 22%; }
+.collage .s1 { left: -2%; top: 52%; } .collage .s2 { right: 8%; bottom: 6%; }
+.collage .d1 { right: 10%; top: 6%; } .collage .d2 { right: 26%; bottom: 2%; }
+@media (max-width: 720px) { .collage .c-pill { left: auto; right: 0; } }

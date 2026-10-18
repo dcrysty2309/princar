@@ -1,0 +1,4 @@
+# Nu se servesc fișierele interne (bază de date, cod comun, unelte)
+<FilesMatch "\.(sqlite|sqlite-wal|sqlite-shm|json|md)$">
+  Require all denied
+</FilesMatch>

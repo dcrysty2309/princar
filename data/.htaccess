@@ -1,0 +1,3 @@
+# Baza de date și contul de admin nu se servesc niciodată prin web
+Require all denied
+Deny from all
